@@ -24,7 +24,6 @@ public class PanemSadali implements ActionListener {
 	boolean player1_turn;
 	int p1, p2 = 0;
 	int sk[] = {3,2,1};
-	
 	PanemSadali(){ // tik ieveidots spēles lauks ar visiem atribūtiem tajā
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(800,400);
@@ -96,7 +95,7 @@ public class PanemSadali implements ActionListener {
 		}
 	}
 	
-	public boolean bestMove() {
+	public boolean bestMove() { //tiek veikts lēmums par labāko gājienu
 		int[] temp = sk;
         int min = temp[0];
         int max = temp[0];
@@ -161,20 +160,20 @@ public class PanemSadali implements ActionListener {
 		dalit.setEnabled(false);
 		if(p1>p2) {
 			text.setForeground(Color.GREEN);
-			text.setText("Cilvēks uzvar");
+			text.setText("Player 1 uzvar");
 		}else if(p1==p2) {
 			text.setForeground(Color.GRAY);
 			text.setText("Neizšķirts");
 		}else {
 			text.setForeground(Color.RED);
-			text.setText("Dators uzvar");
+			text.setText("Player 2 uzvar");
 		}
 	}else {
 		if(player1_turn) {
-			text.setText("Cilvēka gājiens");
+			text.setText("Player 1 gājiens");
 			text.setForeground(Color.GREEN);
 		}else{
-			text.setText("Datora gājiens");
+			text.setText("Player 2 gājiens");
 			text.setForeground(Color.RED);
 		}
 	}
@@ -224,7 +223,8 @@ public class PanemSadali implements ActionListener {
 		update();
 	}
 	public static void main(String[] args) { //spēles sākums
-		PanemSadali panemsadali = new PanemSadali(); //tiek izveidots spēles objekts
+			PanemSadali panemsadali = new PanemSadali();
+			 //tiek izveidots spēles objekts
 	}
 	
 }
