@@ -23,9 +23,9 @@ public class PanemSadali implements ActionListener {
 	JButton panemt = new JButton();
 	boolean player1_turn;
 	int p1, p2 = 0;
-	int sk[] = {6,5,4};
+	int sk[] = {3,2,1};
 	
-	PanemSadali(){
+	PanemSadali(){ // tik ieveidots spēles lauks ar visiem atribūtiem tajā
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(800,400);
 		frame.getContentPane().setBackground(new Color(50,50,50));
@@ -66,7 +66,7 @@ public class PanemSadali implements ActionListener {
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent e) {
+	public void actionPerformed(ActionEvent e) { //tiek izsaukta brīdī, kad tiek piespiesta kāda poga
 		
 		boolean choice; 
 		
@@ -115,13 +115,13 @@ public class PanemSadali implements ActionListener {
 		
         // te min un max var izmantot kā nepieciešams
         // ja bestMove atgriež true tad būs Panemt ja false tad Dalit
-		if(max > 6) {
+		if(Math.abs(min+p2) > Math.abs(max-p1)) {
 			return true;
 		}
 		return false;
 	}
 	
-	public void setBoard() {
+	public void setBoard() { //pēc tam kad spēlētājs veic izvēli par Player1 vai Player2, laukums tiek notīrīts un uzstādīts spēlēs laukums
 		game_panel.removeAll();
 		for(int i=0;i<5;i++) {
 			numbers[i] = new JLabel();
@@ -142,7 +142,7 @@ public class PanemSadali implements ActionListener {
 		frame.revalidate();
 		frame.repaint();
 	}
-	public void update() {
+	public void update() { //atjauno spēles laukumu ar jaunām vērtībām, kas tiek izmainītas spēles gaitā
 		for(int i=0;i<5;i++) {
 			if(i==0) {
 				numbers[i].setForeground(Color.GREEN);
@@ -179,7 +179,7 @@ public class PanemSadali implements ActionListener {
 		}
 	}
 	}
-	public void Panemt() {
+	public void Panemt() { //Metode ar kuru tiek izpildīts gājiens paņemt
 		int temp=sk[0], temp_sk = 0;
 		for(int i=0;i<sk.length-1;i++) {
 			if(sk[i]>=sk[i+1] & sk[i+1]!=0) {
@@ -197,7 +197,7 @@ public class PanemSadali implements ActionListener {
 		sk[temp_sk] = 0;
 		update();
 	}
-	public void Dalit() {
+	public void Dalit() { //Metode ar kuru tiek izpildīts gājiens dalit
 		int temp=sk[0], temp_sk = 0;
 		
 		if(sk[0]!=1) {
@@ -223,8 +223,8 @@ public class PanemSadali implements ActionListener {
 		}
 		update();
 	}
-	public static void main(String[] args) {
-		PanemSadali panemsadali = new PanemSadali();
+	public static void main(String[] args) { //spēles sākums
+		PanemSadali panemsadali = new PanemSadali(); //tiek izveidots spēles objekts
 	}
 	
 }
